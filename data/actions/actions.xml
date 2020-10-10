@@ -32,7 +32,7 @@
 	<action itemid="13307" script="mounts/mounts.lua" />
 	<action itemid="13508" script="mounts/mounts.lua" />
 	<action itemid="13498" script="mounts/mounts.lua" />
-	<action itemid="13537" script="mounts/mount_donkey.lua" />
+	<action itemid="13537" script="mounts/mounts.lua" />
 	<action fromid="13535" toid="13536" script="mounts/mounts.lua" />
 	<action fromid="13538" toid="13539" script="mounts/mounts.lua" />
 	<action fromid="13938" toid="13939" script="mounts/mounts.lua" />
@@ -65,6 +65,7 @@
 	<action itemid="23422" script="oramond/elevator.lua" />
 	<action itemid="23429" script="oramond/elevator.lua" />
 	<!-- others -->
+	<action fromid="36131" toid="36132" script="others/cobra_flask.lua" />	
 	<action itemid="6558" script="others/concentrated_demonic_blood.lua" />
 	<action fromid="11258" toid="11262" script="others/blessing_charms.lua" />
 	<action fromid="28036" toid="28037" script="others/blessing_charms.lua" />
@@ -128,6 +129,7 @@
 	<action itemid="7737" script="others/costume_bags.lua" />
 	<action itemid="7739" script="others/costume_bags.lua" />
 	<action itemid="9076" script="others/costume_bags.lua" />
+	<action itemid="27617" script="others/costume_bags.lua" />
 	<action itemid="13941" script="others/cup_of_molten_gold.lua" />
 	<action fromid="32384" toid="32386" script="others/exercise_training.lua" />
 	<action fromid="32387" toid="32389" script="others/exercise_training.lua" allowfaruse="1" />
@@ -334,7 +336,7 @@
 	<action itemid="14405" function="market" />
 	<!-- worldchanges -->
 	<!-- deeplings -->
-	<action fromuid="25610" touid="25612" script="worldchanges/deeplings/bosses_reward.lua" />
+	<action fromuid="9302" touid="9304" script="worldchanges/deeplings/bosses_reward.lua" />
 	<!-- the mummy's curse -->
 	<action fromaid="50006" toaid="50010" script="worldchanges/the_mummys_curse/horestis_jars.lua" />
 	<!-- quests -->
@@ -350,8 +352,6 @@
 	<action uniqueid="3110" script="quests/barbarian_test/mead.lua" />
 	<!-- bastion forge -->
 	<action itemid="32421" script="falcons/falcon_shield.lua" />
-	<!-- behemoth quest -->
-	<action uniqueid="2007" script="quests/behemoth/lever.lua" />
 	<!-- bigfoot_burden quest -->
 	<action itemid="18305" script="quests/bigfoot_burden/beer.lua" />
 	<action fromuid="3124" touid="3127" script="quests/bigfoot_burden/music.lua" />
@@ -361,6 +361,7 @@
 	<action itemid="18220" script="quests/bigfoot_burden/mushroom.lua" />
 	<action itemid="18225" script="quests/bigfoot_burden/shooting.lua" />
 	<action itemid="18312" script="quests/bigfoot_burden/matchmaker.lua" />
+	<action uniqueid="9307" script="quests/bigfoot_burden/mouthpiece.lua" />
 	<action itemid="18313" script="quests/bigfoot_burden/package.lua" />
 	<action fromid="18328" toid="18331" script="quests/bigfoot_burden/spores.lua" />
 	<action itemid="18336" script="quests/bigfoot_burden/stone.lua" />
@@ -406,8 +407,6 @@
 	<action itemid="31993" script="quests/dangerous_depth/using_crystals.lua" />
 	<!-- access crystal -->
 	<action fromaid="57350" toaid="57367" script="quests/dangerous_depth/warzone_crystals.lua" />
-	<!-- demon helmet quest -->
-	<action uniqueid="2005" script="quests/demon_helmet/lever.lua" />
 	<!-- demon oak -->
 	<action itemid="8293" script="quests/demon_oak/demon_oak.lua" />
 	<action uniqueid="1001" script="quests/demon_oak/demon_oak_gravestone.lua" />
@@ -559,7 +558,7 @@
 	<!-- hero of rathleton quest -->
 	<action actionid="24861" script="quests/hero_of_rathleton/machines_deep_terror.lua" />
 	<action actionid="24863" script="quests/hero_of_rathleton/machines_glooth_horror.lua" />
-	<action actionid="24867" script="quests/hero_of_rathleton/machines_professor_maxxen.lua" />
+	<action actionid="9299" script="quests/hero_of_rathleton/machines_professor_maxxen.lua" />
 	<action actionid="24865" script="quests/hero_of_rathleton/machines_lava.lua" />
 	<action uniqueid="24850" script="quests/hero_of_rathleton/reward.lua" />
 	<action itemid="24184" script="quests/hero_of_rathleton/raging_corpse.lua" allowfaruse="1" />
@@ -612,20 +611,17 @@
 	<!-- oramond quest -->
 	<action uniqueid="1020" script="quests/oramond/glooth_fairy_lever.lua" />
 	<!-- others (quests) -->
-	<action fromaid="4249" toaid="4250" script="quests/others/draconia_quest_walls.lua" />
 	<action actionid="5556" script="quests/others/plate_armor_quest.lua" />
 	<action actionid="5558" script="quests/others/black_knight_quest.lua" />
 	<action itemid="4863" script="quests/others/ectoplasm_container.lua" />
 	<action itemid="7494" script="quests/others/holy_water.lua" />
 	<action actionid="5632" script="quests/others/serpentine_tower_torch.lua" />
 	<action actionid="5633" script="quests/others/serpentine_tower_lever.lua" />
-	<action actionid="4210" script="quests/others/senja_castle_lever.lua" />
 	<action actionid="19910" script="quests/others/steal_from_thieves.lua" />
 	<action uniqueid="1016" script="quests/others/iron_helmet_lever.lua" />
 	<action uniqueid="1017" script="quests/others/orc_edron_lever.lua" />
 	<action uniqueid="1912" script="quests/others/desert_dungeon_lever_quest.lua" />
 	<action uniqueid="50023" script="quests/others/triangle_tower_lever.lua" />
-	<action fromaid="50023" toaid="50024" script="quests/others/thais_lighthouse_lever.lua" />
 	<action actionid="50027" script="quests/others/hellgate_lever.lua" />
 	<action actionid="50129" script="quests/others/life_ring_lever.lua" />
 	<action itemid="10523" script="quests/others/deeper_banuta_shortcut.lua" />
@@ -678,6 +674,18 @@
 	<!-- spirithunters quest -->
 	<action itemid="12670" script="quests/spirit_hunters/magical_device.lua" />
 	<action itemid="12671" script="quests/spirit_hunters/magical_device.lua" />
+	<!-- the cursed crystal -->
+	<action actionid="40001" script="quests/the_cursed_crystal/Misc.lua" />
+	<action actionid="40002" script="quests/the_cursed_crystal/Misc.lua" />
+	<action itemid="18416" script="tools/grinder.lua" />
+	<action itemid="23875" script="quests/the_cursed_crystal/Ointment.lua" />
+	<action fromid="23873" toid="23874" script="quests/the_cursed_crystal/MedusaOil.lua" />
+	<action itemid="23876" script="quests/the_cursed_crystal/MedusaOil.lua" />
+	<action itemid="12422" script="quests/the_cursed_crystal/MedusaOil.lua" />
+	<action itemid="10025" script="quests/the_cursed_crystal/MedusaOil.lua" />
+	<action itemid="5902" script="quests/the_cursed_crystal/Misc.lua" />
+	<action itemid="23941" script="quests/the_cursed_crystal/Misc.lua" />
+	<action itemid="23923" script="quests/the_cursed_crystal/Misc.lua" />
 	<!-- the ancient tombs quest -->
 	<action fromaid="12121" toaid="12123" script="quests/the_ancient_tombs/active_teleport_switches.lua" />
 	<action actionid="12107" script="quests/the_ancient_tombs/oasis_lever_door.lua" />
@@ -736,7 +744,7 @@
 	<action itemid="7496" script="quests/tibia_tales/ultimate_booze_beer_bottle.lua" />
 	<action itemid="8205" script="quests/tibia_tales/exterminator_flask.lua" />
 	<!-- tinder box quest -->
-	<action uniqueid="21137" script="quests/tinder_box/reward.lua" />
+	<action uniqueid="3263" script="quests/tinder_box/reward.lua" />
 	<action itemid="22728" script="quests/tinder_box/tinder_box.lua" />
 	<!-- unnatural selection -->
 	<action uniqueid="1052" script="quests/unnatural_selection/mission5_ray_of_light.lua" />
@@ -765,6 +773,9 @@
 	<action itemid="12318" script="quests/wrath_of_the_emperor/mission10_a_message_of_freedom_sceptre.lua" />
 	<action uniqueid="3198" script="quests/wrath_of_the_emperor/mission11_payback_time_lever.lua" />
 	<action uniqueid="3200" script="quests/wrath_of_the_emperor/mission12_just_rewards.lua" />
+	<!-- grave danger -->
+	<action uniqueid="40028" script="quests/grave_danger/cobra_bastion/scarlett.lua"/>
+	<action actionid="40003" script="quests/grave_danger/cobra_bastion/scarlett.lua"/>
 
 	<!-- Hireling Lamp -->
 	<action itemid="34070" script="others/hirelinglamp.lua" />

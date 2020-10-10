@@ -94,6 +94,7 @@ enum itemAttrTypes : uint32_t {
 	ITEM_ATTRIBUTE_SPECIAL = 1 << 23,
 	ITEM_ATTRIBUTE_IMBUINGSLOTS = 1 << 24,
 	ITEM_ATTRIBUTE_OPENCONTAINER = 1 << 25,
+	ITEM_ATTRIBUTE_QUICKLOOTCONTAINER = 1 << 26,
 	ITEM_ATTRIBUTE_CUSTOM = 1U << 31
 };
 
@@ -533,6 +534,47 @@ enum MapMark_t
 	MAPMARK_GREENSOUTH = 19,
 };
 
+enum QuickLootFilter_t
+{
+	QUICKLOOTFILTER_SKIPPEDLOOT = 0,
+	QUICKLOOTFILTER_ACCEPTEDLOOT = 1,
+};
+
+enum ObjectCategory_t
+{
+	OBJECTCATEGORY_NONE = 0,
+	OBJECTCATEGORY_ARMORS = 1,
+	OBJECTCATEGORY_NECKLACES = 2,
+	OBJECTCATEGORY_BOOTS = 3,
+	OBJECTCATEGORY_CONTAINERS = 4,
+	OBJECTCATEGORY_DECORATION = 5,
+	OBJECTCATEGORY_FOOD = 6,
+	OBJECTCATEGORY_HELMETS = 7,
+	OBJECTCATEGORY_LEGS = 8,
+	OBJECTCATEGORY_OTHERS = 9,
+	OBJECTCATEGORY_POTIONS = 10,
+	OBJECTCATEGORY_RINGS = 11,
+	OBJECTCATEGORY_RUNES = 12,
+	OBJECTCATEGORY_SHIELDS = 13,
+	OBJECTCATEGORY_TOOLS = 14,
+	OBJECTCATEGORY_VALUABLES = 15,
+	OBJECTCATEGORY_AMMO = 16,
+	OBJECTCATEGORY_AXES = 17,
+	OBJECTCATEGORY_CLUBS = 18,
+	OBJECTCATEGORY_DISTANCEWEAPONS = 19,
+	OBJECTCATEGORY_SWORDS = 20,
+	OBJECTCATEGORY_WANDS = 21,
+	OBJECTCATEGORY_PREMIUMSCROLLS = 22, // not used in quickloot
+	OBJECTCATEGORY_TIBIACOINS = 23, // not used in quickloot
+	OBJECTCATEGORY_CREATUREPRODUCTS = 24,
+	OBJECTCATEGORY_STASHRETRIEVE = 27,
+	OBJECTCATEGORY_GOLD = 30,
+	OBJECTCATEGORY_DEFAULT = 31, // unassigned loot
+
+	OBJECTCATEGORY_FIRST = OBJECTCATEGORY_ARMORS,
+	OBJECTCATEGORY_LAST = OBJECTCATEGORY_DEFAULT,
+};
+
 struct Outfit_t {
 	uint16_t lookType = 0;
 	uint16_t lookTypeEx = 0;
@@ -662,7 +704,7 @@ struct CombatDamage
 
 using MarketOfferList = std::list<MarketOffer>;
 using HistoryMarketOfferList = std::list<HistoryMarketOffer>;
-using ShopInfoList = std::list<ShopInfo>;
+using ShopInfoList = std::vector<ShopInfo>;
 
 enum MonstersEvent_t : uint8_t {
 	MONSTERS_EVENT_NONE = 0,
@@ -678,6 +720,15 @@ enum Resource_t : uint8_t
 	RESOURCE_BANK = 0x00,
 	RESOURCE_INVENTORY = 0x01,
 	RESOURCE_PREY = 0x0A,
+};
+
+enum MagicEffectsType_t : uint8_t {
+  MAGIC_EFFECTS_END_LOOP = 0,//ends magic effect loop
+  MAGIC_EFFECTS_DELTA = 1,//needs uint8_t delta after type to adjust position
+  MAGIC_EFFECTS_DELAY = 2,//needs uint16_t delay after type to delay in miliseconds effect display
+  MAGIC_EFFECTS_CREATE_EFFECT = 3,//needs uint8_t effectid after type
+  MAGIC_EFFECTS_CREATE_DISTANCEEFFECT = 4,//needs uint8_t and deltaX(int8_t), deltaY(int8_t) after type
+  MAGIC_EFFECTS_CREATE_DISTANCEEFFECT_REVERSED = 5,//needs uint8_t and deltaX(int8_t), deltaY(int8_t) after type
 };
 
 #endif

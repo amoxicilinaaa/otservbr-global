@@ -529,10 +529,6 @@ QuestDoorAction = {
 		itemId = false,
 		itemPos = {{x = 33007, y = 31536, z = 10}}
 	},
-	[Storage.TibiaTales.RestInHallowedGround.Questline] = {
-		itemId = false,
-		itemPos = {{x = 32190, y = 32432, z = 8}}
-	},
 	-- THe shattered isles door
 	[Storage.TheShatteredIsles.TortoiseEggNargorDoor] = {
 		itemId = false,
@@ -574,7 +570,7 @@ QuestDoorAction = {
 		itemPos = {
 			{x = 32233, y = 31098, z = 7},
 			{x = 32233, y = 31099, z = 7},
-			{x = 32233, y = 310100, z = 7}
+			{x = 32233, y = 31100, z = 7}
 		}
 	},
 	[Storage.SvargrondArena.GreenhornDoor] = {

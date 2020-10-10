@@ -394,39 +394,6 @@ enum Icons_t {
 	ICON_BLEEDING = 1 << 15,
 };
 
-enum QuickLootCategory_t : uint8_t {
-	LOOT_NONE = 0,
-	LOOT_ARMOR = 1,
-	LOOT_AMULET = 2,
-	LOOT_BOOTS = 3,
-	LOOT_CONTAINER = 4,
-	LOOT_DECORATION = 5,
-	LOOT_FOOD = 6,
-	LOOT_HELMET = 7,
-	LOOT_LEGS = 8,
-	LOOT_OTHER = 9,
-	LOOT_POTION = 10,
-	LOOT_RING = 11,
-	LOOT_RUNE = 12,
-	LOOT_SHIELD = 13,
-	LOOT_TOOL = 14,
-	LOOT_VALUABLE = 15,
-	LOOT_WEAPON_AMMO = 16,
-	LOOT_WEAPON_AXE = 17,
-	LOOT_WEAPON_CLUB = 18,
-	LOOT_WEAPON_DISTANCE = 19,
-	LOOT_WEAPON_SWORD = 20,
-	LOOT_WEAPON_WAND = 21,
-	LOOT_CREATURE_PRODUCT = 24,
-	LOOT_STASH_RETRIEVE = 27,
-	LOOT_GOLD = 30,
-	LOOT_UNASSIGNED = 31,
-
-	LOOT_START = LOOT_ARMOR,
-	LOOT_END = LOOT_UNASSIGNED
-
-};
-
 enum WeaponType_t : uint8_t {
 	WEAPON_NONE,
 	WEAPON_SWORD,
@@ -564,6 +531,7 @@ enum item_t : uint16_t {
 	ITEM_INBOX = 14404,
 	ITEM_MARKET = 14405,
 	ITEM_STORE_INBOX = 26052,
+	
 
 	ITEM_MALE_CORPSE = 3058,
 	ITEM_FEMALE_CORPSE = 3065,
@@ -598,6 +566,8 @@ enum item_t : uint16_t {
 	ITEM_WALKABLE_SEA_END = 4625,
 
 	ITEM_DOCUMENT_RO = 1968, //read-only
+
+	ITEM_STONE_SKIN_AMULET = 2197,
 };
 
 enum PlayerFlags : uint64_t {
@@ -639,6 +609,10 @@ enum PlayerFlags : uint64_t {
 	PlayerFlag_IgnoreWeaponCheck = static_cast<uint64_t>(1) << 35,
 	PlayerFlag_CannotBeMuted = static_cast<uint64_t>(1) << 36,
 	PlayerFlag_IsAlwaysPremium = static_cast<uint64_t>(1) << 37,
+};
+
+enum PlayerCustomFlags : uint64_t {
+  PlayerCustomFlag_CanMapClickTeleport = 1 << 0,
 };
 
 enum ReloadTypes_t : uint8_t  {

@@ -117,12 +117,6 @@ local config = {
 		needItem = {itemId = 2344},
 		effect = CONST_ME_MAGIC_RED
 	},
-	[3027] = {
-		items = {
-			{itemId = 2487}
-		},
-		storage = Storage.QuestChests.BlackKnightTreeCrownArmor
-	},
 	[3062] = {
 		items = {
 			{itemId = 8262}
@@ -220,12 +214,6 @@ local config = {
 		},
 		storage = Storage.GhostShipQuest
 	},
-	[9055] = {
-		items = {
-			{itemId = 2519}
-		},
-		storage = Storage.QuestChests.BlackKnightTreeCrownShield
-	},
 	[9136] = {
 		items = {
 			{itemId = 2091, actionId = 3980}
@@ -246,20 +234,20 @@ local config = {
 		formerValue = 2,
 		newValue = 3
 	},
-	[12125] = {
+	[9255] = {
 		items = {
 			{itemId = 4850}
 		},
 		storage = Storage.HydraEggQuest
 	},
-	[12126] = {
+	[9256] = {
 		items = {
 			{itemId = 4840, decay = true}
 		},
 		storage = Storage.TheApeCity.WitchesCapSpot,
 		time = true
 	},
-	[12331] = {
+	[9259] = {
 		items = {
 			{itemId = 11076}
 		},
@@ -268,7 +256,7 @@ local config = {
 		newValue = 2,
 		say = 'You dig out a skull from the pile of bones. That must be the skull Lazaran talked about.'
 	},
-	[12507] = {
+	[9266] = {
 		items = {
 			{itemId = 8766}
 		},
@@ -277,7 +265,7 @@ local config = {
 		newValue = 3,
 		say = 'To buy some time you replace the fish with a piece of carrot.'
 	},
-	[12578] = {
+	[9277] = {
 		items = {
 			{itemId = 7736}
 		},
@@ -302,12 +290,6 @@ local config = {
 		storage = Storage.HiddenCityOfBeregar.JusticeForAll,
 		formerValue = 3,
 		newValue = 4
-	},
-	[50126] = {
-		items = {
-			{itemId = 2489, count = 1}
-		},
-		storage = 857439
 	},
 	[65201] = {
 		items = {

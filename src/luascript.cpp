@@ -1534,19 +1534,45 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(ITEM_ATTRIBUTE_DOORID)
 	registerEnum(ITEM_ATTRIBUTE_SPECIAL)
 	registerEnum(ITEM_ATTRIBUTE_OPENCONTAINER)
+	registerEnum(ITEM_ATTRIBUTE_QUICKLOOTCONTAINER)
 
 	registerEnum(ITEM_TYPE_DEPOT)
 	registerEnum(ITEM_TYPE_REWARDCHEST)
 	registerEnum(ITEM_TYPE_MAILBOX)
 	registerEnum(ITEM_TYPE_TRASHHOLDER)
-	registerEnum(ITEM_TYPE_CONTAINER)
 	registerEnum(ITEM_TYPE_DOOR)
 	registerEnum(ITEM_TYPE_MAGICFIELD)
 	registerEnum(ITEM_TYPE_TELEPORT)
 	registerEnum(ITEM_TYPE_BED)
 	registerEnum(ITEM_TYPE_KEY)
-	registerEnum(ITEM_TYPE_RUNE)
 	registerEnum(ITEM_TYPE_SUPPLY)
+
+	// Quickloot
+	registerEnum(ITEM_TYPE_ARMOR)
+	registerEnum(ITEM_TYPE_AMULET)
+	registerEnum(ITEM_TYPE_BOOTS)
+	registerEnum(ITEM_TYPE_DECORATION)
+	registerEnum(ITEM_TYPE_CONTAINER)
+	registerEnum(ITEM_TYPE_FOOD)
+	registerEnum(ITEM_TYPE_HELMET)
+	registerEnum(ITEM_TYPE_LEGS)
+	registerEnum(ITEM_TYPE_OTHER)
+	registerEnum(ITEM_TYPE_POTION)
+	registerEnum(ITEM_TYPE_RING)
+	registerEnum(ITEM_TYPE_RUNE)
+	registerEnum(ITEM_TYPE_SHIELD)
+	registerEnum(ITEM_TYPE_TOOLS)
+	registerEnum(ITEM_TYPE_VALUABLE)
+	registerEnum(ITEM_TYPE_AMMO)
+	registerEnum(ITEM_TYPE_AXE)
+	registerEnum(ITEM_TYPE_CLUB)
+	registerEnum(ITEM_TYPE_DISTANCE)
+	registerEnum(ITEM_TYPE_SWORD)
+	registerEnum(ITEM_TYPE_WAND)
+	registerEnum(ITEM_TYPE_CREATUREPRODUCT)
+	registerEnum(ITEM_TYPE_RETRIEVE)
+	registerEnum(ITEM_TYPE_GOLD)
+	registerEnum(ITEM_TYPE_UNASSIGNED)
 
 	registerEnum(ITEM_BAG)
 	registerEnum(ITEM_SHOPPING_BAG)
@@ -1593,6 +1619,11 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(ITEM_KEG_START)
 	registerEnum(ITEM_KEG_END)
 
+	registerEnum(ITEM_STONE_SKIN_AMULET)
+
+	registerEnum(ITEM_GOLD_POUCH)
+	registerEnum(ITEM_STORE_INBOX)
+
 	registerEnum(IMBUEMENT_SLOT)
 
 	registerEnum(PlayerFlag_CannotUseCombat)
@@ -1633,6 +1664,8 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(PlayerFlag_IgnoreWeaponCheck)
 	registerEnum(PlayerFlag_CannotBeMuted)
 	registerEnum(PlayerFlag_IsAlwaysPremium)
+
+	registerEnum(PlayerCustomFlag_CanMapClickTeleport)
 
 	registerEnum(PLAYERSEX_FEMALE)
 	registerEnum(PLAYERSEX_MALE)
@@ -1750,34 +1783,6 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(TILESTATE_FLOORCHANGE_SOUTH_ALT)
 	registerEnum(TILESTATE_FLOORCHANGE_EAST_ALT)
 	registerEnum(TILESTATE_SUPPORTS_HANGABLE)
-
-	registerEnum(LOOT_UNASSIGNED)
-	registerEnum(LOOT_GOLD)
-	registerEnum(LOOT_ARMOR)
-	registerEnum(LOOT_AMULET)
-	registerEnum(LOOT_BOOTS)
-	registerEnum(LOOT_CONTAINER)
-	registerEnum(LOOT_CREATURE_PRODUCT)
-	registerEnum(LOOT_DECORATION)
-	registerEnum(LOOT_FOOD)
-	registerEnum(LOOT_HELMET)
-	registerEnum(LOOT_LEGS)
-	registerEnum(LOOT_OTHER)
-	registerEnum(LOOT_POTION)
-	registerEnum(LOOT_RING)
-	registerEnum(LOOT_RUNE)
-	registerEnum(LOOT_SHIELD)
-	registerEnum(LOOT_TOOL)
-	registerEnum(LOOT_VALUABLE)
-	registerEnum(LOOT_WEAPON_AMMO)
-	registerEnum(LOOT_WEAPON_AXE)
-	registerEnum(LOOT_WEAPON_CLUB)
-	registerEnum(LOOT_WEAPON_DISTANCE)
-	registerEnum(LOOT_WEAPON_SWORD)
-	registerEnum(LOOT_WEAPON_WAND)
-	registerEnum(LOOT_STASH_RETRIEVE)
-	registerEnum(LOOT_START)
-	registerEnum(LOOT_END)
 
 	registerEnum(WEAPON_NONE)
 	registerEnum(WEAPON_SWORD)
@@ -2089,6 +2094,7 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Game", "getSpectators", LuaScriptInterface::luaGameGetSpectators);
 	registerMethod("Game", "getPlayers", LuaScriptInterface::luaGameGetPlayers);
 	registerMethod("Game", "loadMap", LuaScriptInterface::luaGameLoadMap);
+	registerMethod("Game", "loadSpawnFile", LuaScriptInterface::luaGameLoadSpawnFile);
 
 	registerMethod("Game", "getMonsterCount", LuaScriptInterface::luaGameGetMonsterCount);
 	registerMethod("Game", "getPlayerCount", LuaScriptInterface::luaGameGetPlayerCount);
@@ -2427,8 +2433,6 @@ void LuaScriptInterface::registerFunctions()
 
 	registerMethod("Player", "getFreeCapacity", LuaScriptInterface::luaPlayerGetFreeCapacity);
 
-	registerMethod("Player", "canOpenCorpse", LuaScriptInterface::luaPlayerCanOpenCorpse);
-
 	registerMethod("Player", "getKills", LuaScriptInterface::luaPlayerGetKills);
 	registerMethod("Player", "setKills", LuaScriptInterface::luaPlayerSetKills);
 
@@ -2603,6 +2607,7 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Player", "getPreyBonusValue", LuaScriptInterface::luaPlayerGetPreyBonusValue);
 	registerMethod("Player", "getPreyBonusGrade", LuaScriptInterface::luaPlayerGetPreyBonusGrade);
 	registerMethod("Player", "getPreyBonusRerolls", LuaScriptInterface::luaPlayerGetPreyBonusRerolls);
+	registerMethod("Player", "getPreyTick", LuaScriptInterface::luaPlayerGetPreyTick);
 	// SET
 	registerMethod("Player", "setPreyState", LuaScriptInterface::luaPlayerSetPreyState);
 	registerMethod("Player", "setPreyUnlocked", LuaScriptInterface::luaPlayerSetPreyUnlocked);
@@ -2615,6 +2620,7 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Player", "setPreyBonusValue", LuaScriptInterface::luaPlayerSetPreyBonusValue);
 	registerMethod("Player", "setPreyBonusGrade", LuaScriptInterface::luaPlayerSetPreyBonusGrade);
 	registerMethod("Player", "setPreyBonusRerolls", LuaScriptInterface::luaPlayerSetPreyBonusRerolls);
+	registerMethod("Player", "setPreyTick", LuaScriptInterface::luaPlayerSetPreyTick);
 
 	registerMethod("Player", "getHouse", LuaScriptInterface::luaPlayerGetHouse);
 	registerMethod("Player", "sendHouseWindow", LuaScriptInterface::luaPlayerSendHouseWindow);
@@ -2719,10 +2725,12 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Group", "getId", LuaScriptInterface::luaGroupGetId);
 	registerMethod("Group", "getName", LuaScriptInterface::luaGroupGetName);
 	registerMethod("Group", "getFlags", LuaScriptInterface::luaGroupGetFlags);
+	registerMethod("Group", "getCustomFlags", LuaScriptInterface::luaGroupGetCustomFlags);
 	registerMethod("Group", "getAccess", LuaScriptInterface::luaGroupGetAccess);
 	registerMethod("Group", "getMaxDepotItems", LuaScriptInterface::luaGroupGetMaxDepotItems);
 	registerMethod("Group", "getMaxVipEntries", LuaScriptInterface::luaGroupGetMaxVipEntries);
 	registerMethod("Group", "hasFlag", LuaScriptInterface::luaGroupHasFlag);
+	registerMethod("Group", "hasCustomFlag", LuaScriptInterface::luaGroupHasCustomFlag);
 
 	// Vocation
 	registerClass("Vocation", "", LuaScriptInterface::luaVocationCreate);
@@ -2836,7 +2844,6 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("ItemType", "getExtraDefense", LuaScriptInterface::luaItemTypeGetExtraDefense);
 	registerMethod("ItemType", "getImbuingSlots", LuaScriptInterface::luaItemTypeGetImbuingSlots);
 	registerMethod("ItemType", "getArmor", LuaScriptInterface::luaItemTypeGetArmor);
-	registerMethod("ItemType", "getLootCategory", LuaScriptInterface::luaItemTypeGetLootCategory);
 	registerMethod("ItemType", "getWeaponType", LuaScriptInterface::luaItemTypeGetWeaponType);
 
 	registerMethod("ItemType", "getElementType", LuaScriptInterface::luaItemTypeGetElementType);
@@ -3200,7 +3207,14 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Imbuement", "getElementDamage", LuaScriptInterface::luaImbuementGetElementDamage);
 	registerMethod("Imbuement", "getCombatType", LuaScriptInterface::luaImbuementGetCombatType);
 
+	// Mounts
+	registerClass("Mount", "", LuaScriptInterface::luaCreateMount);
+	registerMetaMethod("Mount", "__eq", LuaScriptInterface::luaUserdataCompare);
 
+	registerMethod("Mount", "getName", LuaScriptInterface::luaMountGetName);
+	registerMethod("Mount", "getId", LuaScriptInterface::luaMountGetId);
+	registerMethod("Mount", "getClientId", LuaScriptInterface::luaMountGetClientId);
+	registerMethod("Mount", "getSpeed", LuaScriptInterface::luaMountGetSpeed);
 }
 
 #undef registerEnum
@@ -4604,6 +4618,14 @@ int LuaScriptInterface::luaGameLoadMap(lua_State* L)
 		}
 	}));
 	return 0;
+}
+
+int LuaScriptInterface::luaGameLoadSpawnFile(lua_State* L)
+{
+	// Game.loadSpawnFile(fileName)
+	const std::string& fileName = getString(L, 1);
+	pushBoolean(L, g_game.loadCustomSpawnFile(fileName));
+	return 1;
 }
 
 int LuaScriptInterface::luaGameGetMonsterCount(lua_State* L)
@@ -8617,24 +8639,6 @@ int LuaScriptInterface::luaPlayerGetFreeCapacity(lua_State* L)
 	return 1;
 }
 
-int LuaScriptInterface::luaPlayerCanOpenCorpse(lua_State* L)
-{
-	// player:canOpenCorpse(corpseOwner)
-	Player* player = getUserdata<Player>(L, 1);
-	if (!player) {
-		lua_pushnil(L);
-		return 1;
-	}
-	if (player) {
-		uint32_t corpseOwner = getNumber<uint32_t>(L, 2);
-		pushBoolean(L, player->canOpenCorpse(corpseOwner));
-	}
-	else {
-		lua_pushnil(L);
-	}
-	return 1;
-}
-
 int LuaScriptInterface::luaPlayerGetKills(lua_State* L)
 {
 	// player:getKills()
@@ -10858,6 +10862,20 @@ int LuaScriptInterface::luaPlayerGetPreyBonusRerolls(lua_State* L)
 	return 1;
 }
 
+int LuaScriptInterface::luaPlayerGetPreyTick(lua_State* L)
+{
+	// player:getPreyTick(slot)
+	Player* player = getUserdata<Player>(L, 1);
+	uint16_t slot = getNumber<uint16_t>(L, 2);
+	if (player) {
+		lua_pushnumber(L, player->getPreyTick(slot));
+	}
+	else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 // SET
 int LuaScriptInterface::luaPlayerSetPreyState(lua_State* L)
 {
@@ -11016,6 +11034,21 @@ int LuaScriptInterface::luaPlayerSetPreyBonusRerolls(lua_State* L)
 	if (player) {
 		uint16_t value = getNumber<uint16_t>(L, 2);
 		player->preyBonusRerolls = value;
+	}
+	else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerSetPreyTick(lua_State* L)
+{
+	// player:setPreyTick(slot, tick)
+	Player* player = getUserdata<Player>(L, 1);
+	uint16_t slot = getNumber<uint16_t>(L, 2);
+	uint16_t tick = getNumber<uint16_t>(L, 3);
+	if (player) {
+		player->preySlotTick[slot] = tick;
 	}
 	else {
 		lua_pushnil(L);
@@ -12112,6 +12145,18 @@ int LuaScriptInterface::luaGroupGetFlags(lua_State* L)
 	return 1;
 }
 
+int LuaScriptInterface::luaGroupGetCustomFlags(lua_State* L)
+{
+	// group:getCustomFlags()
+	Group* group = getUserdata<Group>(L, 1);
+	if (group) {
+		lua_pushnumber(L, group->customflags);
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 int LuaScriptInterface::luaGroupGetAccess(lua_State* L)
 {
 	// group:getAccess()
@@ -12155,6 +12200,19 @@ int LuaScriptInterface::luaGroupHasFlag(lua_State* L)
 	if (group) {
 		PlayerFlags flag = getNumber<PlayerFlags>(L, 2);
 		pushBoolean(L, (group->flags & flag) != 0);
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaGroupHasCustomFlag(lua_State* L)
+{
+	// group:hasCustomFlag(flag)
+	Group* group = getUserdata<Group>(L, 1);
+	if (group) {
+		PlayerCustomFlags customflag = getNumber<PlayerCustomFlags>(L, 2);
+		pushBoolean(L, (group->customflags & customflag) != 0);
 	} else {
 		lua_pushnil(L);
 	}
@@ -13290,18 +13348,6 @@ int LuaScriptInterface::luaItemTypeGetArmor(lua_State* L)
 	const ItemType* itemType = getUserdata<const ItemType>(L, 1);
 	if (itemType) {
 		lua_pushnumber(L, itemType->armor);
-	} else {
-		lua_pushnil(L);
-	}
-	return 1;
-}
-
-int LuaScriptInterface::luaItemTypeGetLootCategory(lua_State* L)
-{
-	// itemType:getLootCategory()
-	const ItemType* itemType = getUserdata<const ItemType>(L, 1);
-	if (itemType) {
-		lua_pushnumber(L, itemType->quickLootCategory);
 	} else {
 		lua_pushnil(L);
 	}
@@ -17949,6 +17995,82 @@ int LuaScriptInterface::luaImbuementGetCombatType(lua_State* L)
 		lua_pushnil(L);
 	}
 	return 1;
+}
+
+// Mounts
+int LuaScriptInterface::luaCreateMount(lua_State* L)
+{
+	// Mount(id or name)
+	Mount* mount;
+	if (isNumber(L, 2)) {
+    	mount = g_game.mounts.getMountByID(getNumber<uint32_t>(L, 2));
+	} else if (isString(L, 2)) {
+    	std::string mountName = getString(L, 2);
+    	mount = g_game.mounts.getMountByName(mountName);
+	} else {
+    	mount = nullptr;
+	}
+
+  	if (mount) {
+    	pushUserdata<Mount>(L, mount);
+    	setMetatable(L, -1, "Mount");
+ 	 } else {
+		lua_pushnil(L);
+  	}
+
+  	return 1;
+}
+
+int LuaScriptInterface::luaMountGetName(lua_State* L)
+{
+  	// mount:getName()
+  	Mount* mount = getUserdata<Mount>(L, 1);
+  	if (mount) {
+    	pushString(L, mount->name);
+  	} else {
+    	lua_pushnil(L);
+  	}
+
+  	return 1;
+}
+
+int LuaScriptInterface::luaMountGetId(lua_State* L)
+{
+  	// mount:getId()
+  	Mount* mount = getUserdata<Mount>(L, 1);
+  	if (mount) {
+    	lua_pushnumber(L, mount->id);
+  	} else {
+    	lua_pushnil(L);
+  	}
+
+  	return 1;
+}
+
+int LuaScriptInterface::luaMountGetClientId(lua_State* L)
+{
+  	// mount:getClientId()
+  	Mount* mount = getUserdata<Mount>(L, 1);
+  	if (mount) {
+  		lua_pushnumber(L, mount->clientId);
+  	} else {
+  		lua_pushnil(L);
+  	}
+
+  	return 1;
+}
+
+int LuaScriptInterface::luaMountGetSpeed(lua_State* L)
+{
+  	// mount:getSpeed()
+  	Mount* mount = getUserdata<Mount>(L, 1);
+  	if (mount) {
+    	lua_pushnumber(L, mount->speed);
+  	} else {
+    	lua_pushnil(L);
+  	}
+
+  	return 1;
 }
 
 //

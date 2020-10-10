@@ -7,8 +7,8 @@ TODO
 SvargrondArena = {
 	-- kick time in seconds (10 minutes)
 	kickTime = 600,
-	kickPosition = {x = 32251, y = 31098, z = 6},
-	rewardPosition = {x = 32222, y = 31080, z = 6},
+	kickPosition = Position({x = 32251, y = 31098, z = 6}),
+	rewardPosition = Position({x = 32222, y = 31080, z = 6}),
 
 	-- used to store event ids
 	kickEvents = {},
@@ -132,11 +132,6 @@ ARENA = {
 			[8] = 'rocky',
 			[9] = 'cursed gladiator',
 			[10] = 'orcus the cruel'
-		},
-		reward = {
-			trophy = 5807,
-			trophyStorage = Storage.SvargrondArena.TrophyGreenhorn,
-			desc = 'It is given to the courageous victor of the barbarian arena in greenhorn difficulty. Awarded to %s',
 		}
 	},
 	[2] = {
@@ -155,11 +150,6 @@ ARENA = {
 			[8] = 'spirit of earth',
 			[9] = 'spirit of water',
 			[10] = 'spirit of fire'
-		},
-		reward = {
-			trophy = 5806,
-			trophyStorage = Storage.SvargrondArena.TrophyScrapper,
-			desc = 'It is given to the courageous victor of the barbarian arena in scrapper difficulty. Awarded to %s.',
 		}
 	},
 	[3] = {
@@ -178,12 +168,25 @@ ARENA = {
 			[8] = 'fallen mooh\'tah master ghar',
 			[9] = 'deathbringer',
 			[10] = 'the obliverator'
-		},
-		reward = {
-			trophy = 5805,
-			trophyStorage = Storage.SvargrondArena.TrophyWarlord,
-			desc = 'It is given to the courageous victor of the barbarian arena in warlord difficulty. Awarded to %s.',
 		}
+	}
+}
+
+ARENA_TROPHY = {
+	[3264] = {
+		trophy = 5807,
+		trophyStorage = Storage.SvargrondArena.TrophyGreenhorn,
+		desc = 'It is given to the courageous victor of the barbarian arena in greenhorn difficulty. Awarded to %s',
+	},
+	[3265] = {
+		trophy = 5806,
+		trophyStorage = Storage.SvargrondArena.TrophyScrapper,
+		desc = 'It is given to the courageous victor of the barbarian arena in scrapper difficulty. Awarded to %s.',
+	},
+	[3266] = {
+		trophy = 5805,
+		trophyStorage = Storage.SvargrondArena.TrophyWarlord,
+		desc = 'It is given to the courageous victor of the barbarian arena in warlord difficulty. Awarded to %s.',
 	}
 }
 

@@ -1,13 +1,42 @@
--- Internal Use
-STONE_SKIN_AMULET = 2197
-GOLD_POUCH = 26377
-ITEM_STORE_INBOX = 26052
+CONTAINER_WEIGHT_CHECK = true -- true = enable / false = disable
+CONTAINER_WEIGHT_MAX = 1000000 -- 1000000 = 10k = 10000.00 oz
 
-DISABLE_CONTAINER_WEIGHT = 0 -- 0 = ENABLE CONTAINER WEIGHT CHECK | 1 = DISABLE CONTAINER WEIGHT CHECK
-CONTAINER_WEIGHT = 1000000 -- 1000000 = 10k = 10000.00 oz
+local storeItemID = {
+	-- registered item ids here are not tradable with players
+	-- these items can be set to moveable at items.xml
+	-- 500 charges exercise weapons
+	32384, -- exercise sword
+	32385, -- exercise axe
+	32386, -- exercise club
+	32387, -- exercise bow
+	32388, -- exercise rod
+	32389, -- exercise wand
 
--- Items sold on the store that should not be moved off the store container
-local storeItemID = {32384,32385,32386,32387,32388,32389,32124,32125,32126,32127,32128,32129,32109,33299,26378,29020,35172,35173,35174,35175,35176,35177,35178,35179,35180}
+	-- 50 charges exercise weapons
+	32124, -- training sword
+	32125, -- training axe
+	32126, -- training club
+	32127, -- training bow
+	32128, -- training wand
+	32129, -- training club
+
+	-- magic gold and magic converter (activated/deactivated)
+	32109, -- magic gold converter
+	33299, -- magic gold converter
+	26378, -- gold converter
+	29020, -- gold converter
+
+	-- foods
+	35172, -- roasted wyvern wings
+	35173, -- carrot pie
+	35174, -- tropical marinated tiger
+	35175, -- delicatessen salad
+	35176, -- chilli con carniphila
+	35177, -- svargrond salmon filet
+	35178, -- carrion casserole
+	35179, -- consecrated beef
+	35180, -- overcooked noodles
+}
 
 -- Capacity imbuement store
 local STORAGE_CAPACITY_IMBUEMENT = 42154
@@ -153,20 +182,6 @@ function Player:onLook(thing, position, distance)
 				description = string.format("%s, Unique ID: %d", description, uniqueId)
 			end
 
-			if thing:isContainer() then
-				local quickLootCategories = {}
-				local container = Container(thing.uid)
-				for categoryId = LOOT_START, LOOT_END do
-					if container ~= nil then
-						if container:hasQuickLootCategory(categoryId) then
-							table.insert(quickLootCategories, categoryId)
-						end
-					end
-				end
-
-				description = string.format("%s, QuickLootCategory: (%s)", description, table.concat(quickLootCategories, ", "))
-			end
-
 			local itemType = thing:getType()
 
 			local transformEquipId = itemType:getTransformEquipId()
@@ -305,12 +320,6 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 		return false
 	end
 
-	-- Store Items
-	if isInArray(storeItemID,item.itemid) then
-		self:sendCancelMessage('You cannot move this item outside this container.')
-		return false
-	end
-
 	-- No move if item count > 20 items
 	local tile = Tile(toPosition)
 	if tile and tile:getItemCount() > 20 then
@@ -319,8 +328,8 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 	end
 
 	-- No move parcel very heavy
-	if DISABLE_CONTAINER_WEIGHT == 0 and ItemType(item:getId()):isContainer()
-	and item:getWeight() > CONTAINER_WEIGHT then
+	if CONTAINER_WEIGHT_CHECK and ItemType(item:getId()):isContainer()
+	and item:getWeight() > CONTAINER_WEIGHT_MAX then
 		self:sendCancelMessage("Your cannot move this item too heavy.")
 		return false
 	end
@@ -364,7 +373,7 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 	-- SSA exhaust
 	local exhaust = { }
 	if toPosition.x == CONTAINER_POSITION and toPosition.y == CONST_SLOT_NECKLACE
-	and item:getId() == STONE_SKIN_AMULET then
+	and item:getId() == ITEM_STONE_SKIN_AMULET then
 		local pid = self:getId()
 		if exhaust[pid] then
 			self:sendCancelMessage(RETURNVALUE_YOUAREEXHAUSTED)
@@ -394,7 +403,7 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 			return false
 		end
 		-- Gold Pouch
-		if (containerTo:getId() == GOLD_POUCH) then
+		if (containerTo:getId() == ITEM_GOLD_POUCH) then
 			if (not (item:getId() == ITEM_CRYSTAL_COIN or item:getId() == ITEM_PLATINUM_COIN
 			or item:getId() == ITEM_GOLD_COIN)) then
 				self:sendCancelMessage("You can move only money to this container.")
@@ -403,24 +412,16 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 		end
 	end
 
-	-- No move gold pouch
-	if item:getId() == GOLD_POUCH then
-		self:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
+
+	-- Bath tube
+	local toTile = Tile(toCylinder:getPosition())
+	local topDownItem = toTile:getTopDownItem()
+	if topDownItem and table.contains({ BATHTUB_EMPTY, BATHTUB_FILLED }, topDownItem:getId()) then
 		return false
 	end
 
 	-- Handle move items to the ground
 	if toPosition.x ~= CONTAINER_POSITION then
-		if item:isContainer() then
-			local container = Container(item.uid)
-			for categoryId = LOOT_START, LOOT_END do
-				if container:hasQuickLootCategory(categoryId) then
-					container:removeQuickLootCategory(categoryId)
-					self:setQuickLootBackpack(categoryId, nil)
-				end
-			end
-		end
-
 		return true
 	end
 
@@ -734,6 +735,11 @@ function Player:onGainExperience(source, exp, rawExp)
 		else
 			self:setStaminaXpBoost(100)
 		end
+	end
+			
+	-- Boosted creature
+	if source:getName():lower() == BoostedCreature.name:lower() then
+		exp = exp * 2
 	end
 
 	self:setBaseXpGain(displayRate * 100)

@@ -132,6 +132,7 @@ Storage = {
 	Navigator = 30048,
 	DwarvenLegs = 30049,
 	PrinceDrazzakTime = 30050,
+	StoreExaust = 30051,
 	--[[
 	Old storages
 	Over time, this will be dropped and replaced by the table above
@@ -441,7 +442,8 @@ Storage = {
 	},
 	Grimvale = {
 		-- Reserved storage from 50380 - 50399
-		SilverVein = 50380
+		SilverVein = 50380,
+		WereHelmetEnchant = 50381
 	},
 	HeroRathleton = {
 		-- Reserved storage from 50400 - 50419
@@ -1272,6 +1274,11 @@ Storage = {
 			Sister = 51527,
 			Statue = 51528,
 			LastMissionState = 51529
+		},
+	TheCursedCrystal = {
+		Oneeyedjoe = 51530, 
+		MedusaOil = 51531,
+		Questline = 51532
 		}
 	},
 	TheShatteredIsles = {
@@ -1664,7 +1671,10 @@ Storage = {
 	GraveDanger = {
 		-- Reserved storage from 52310 - 52339
 		Questline = 52310,
-		ScarlettEtzel = 52311
+		CobraBastion = {
+			Questline = 52311,
+			ScarlettTimer = 52312
+		}
 	},
 	RottinWoodAndMaried = {
 		-- Reserved storage from 52340 - 52349
@@ -1683,48 +1693,141 @@ Storage = {
 		Time4 = 52354,
 	},
 	-- News quest development
-  	-- New storages
+	-- New storages
 	Quest = {
 		-- update pre-6.0
-		DeeperFibula = {},
-		OrnamentedShield = {},
-		ShortSword = {},
-		ThaisLighthouse = {},
+		DeeperFibula = {
+			Key3980 = 10000,
+			RewardTowerShield = 10001,
+			RewardWarriorHelmet = 10002,
+			RewardDwarvenRing = 10003,
+			RewardElvenAmulet = 10004,
+			RewardKnightAxe = 10005
+		},
+		OrnamentedShield = {
+			Bag = 10006,
+			RedBag = 10007
+		},
+		ShortSword = {
+			Book = 10008
+		},
+		ThaisLighthouse = {
+			BattleHammer = 10009,
+			DarkShield = 10010
+		},
 		-- update 6.0
-		StuddedShield = {},
+		StuddedShield = {
+			BananaFree = 10011,
+			BananaPremium = 10012
+		},
 		-- update 6.1
-		EmperorsCookies = {},
-		ExplorerBrooch = {},
-		OrcFortress = {},
+		EmperorsCookies = {
+			Key3800 = 10013,
+			Key3801 = 10014,
+			Key3802 = 10015,
+			RopeReward = 10016,
+		},
+		ExplorerBrooch = {
+			Reward = 10017
+		},
+		OrcFortress = {
+			KnightAxe = 10018,
+			KnightArmor = 10019,
+			FireSword = 10020
+		},
 		Panpipe = {
-			Key4055Reward = 10000
+			Key4055 = 10021,
+			Reward = 10022
 		},
 		-- update 6.2
-		Draconia = {},
+		Draconia = {
+			Reward1 = 10023,
+			Reward2 = 10024
+		},
 		-- update 6.4
-		AdornedUHRune = {},
-		BarbarianAxe = {},
-		BerserkerTreasure = {},
-		DarkArmor = {},
-		DemonHelmet = {},
-		DoubleHero = {},
-		EdronGoblin = {},
-		FireAxe = {},
-		PoisonDaggers = {},
-		Ring = {},
-		ShamanTreasure = {},
-		StrongPotions = {},
-		TrollCave = {},
-		VampireShield = {},
-		WeddingRing = {},
+		AdornedUHRune = {
+			Reward = 10025
+		},
+		BarbarianAxe = {
+			BarbarianAxe = 10026,
+			Scimitar = 10027
+		},
+		BerserkerTreasure = {
+			Reward = 10028
+		},
+		DarkArmor = {
+			Reward = 10029
+		},
+		DemonHelmet = {
+			SteelBoots = 10030,
+			DemonHelmet = 10031,
+			DemonShield = 10032
+		},
+		DoubleHero = {
+			RedGem = 10033,
+			ClubRing = 10034
+		},
+		EdronGoblin = {
+			SilverAmulet = 10035,
+			SteelShield = 10036
+		},
+		FireAxe = {
+			Bag = 10037,
+			FireAxe = 10038
+		},
+		PoisonDaggers = {
+			BackpackReward = 10039
+		},
+		Ring = {
+			TimeRing = 10040,
+			SwordRing = 10041
+		},
+		ShamanTreasure = {
+			Bag = 10042
+		},
+		StrongPotions = {
+			Reward = 10043
+		},
+		TrollCave = {
+			GarlicNecklace = 10044,
+			BrassLegs = 10045
+		},
+		VampireShield = {
+			Bag = 10046,
+			DragonLance = 10047,
+			VampireShield = 10048
+		},
+		WeddingRing = {
+			DragonNecklace = 10049,
+			WeedingRing = 10050
+		},
 		-- update 6.5
-		AlawarsVault = {},
+		AlawarsVault = {
+			WhitePearl = 10051,
+			Broadsword = 10052
+		},
 		-- update 7.1
-		BlackKnight = {},
-		DragonTower = {},
-		TimeRing = {},
+		BlackKnight = {
+			Key5010 = 10053,
+			CrownArmor = 10054,
+			CrownShield = 10055
+		},
+		DragonTower = {
+			Backpack1 = 10056,
+			Backpack2 = 10057
+		},
+		TimeRing = {
+			CrystallBall = 10058,
+			TimeRing = 10059,
+			ElvenAmulet = 10060
+		},
 		-- update 7.2
-		Behemoth = {},
+		Behemoth = {
+			Bag = 10061,
+			GuardianHalberd = 10062,
+			DemonShield = 10063,
+			GoldenArmor = 10064
+		},
 		ParchmentRoom = {},
 		TheQueenOfTheBanshees = {},
 		-- update 7.24
@@ -2020,7 +2123,8 @@ Storage = {
 		GraveDanger = {},
 		-- update 12.30
 		FeasterOfSouls = {},
-		PoltergeistOutfits = {}
+		PoltergeistOutfits = {},
+		Key4502 = 15000
 	}
 }
 
@@ -2118,7 +2222,8 @@ GlobalStorage = {
 		Versperoth = {
 			Battle = 60112,
 			Health = 60113
-		}
+		},
+		Mouthpiece = 60114
 	},
 	WrathOfTheEmperor = {
 		-- Reserved storage from 60120 - 60139
@@ -2162,7 +2267,8 @@ GlobalStorage = {
 	TheMummysCurse = 65008,
 	OberonEventTime = 65009,
 	PrinceDrazzakEventTime = 65010,
-	ScarlettEtzelEventTime = 65011
+	ScarlettEtzelEventTime = 65011,
+	CobraBastionFlask = 65012
 }
 
 
@@ -2181,7 +2287,8 @@ local benchmark = os.clock()
 local extraction = {}
 extractValues(Storage, extraction) -- Call function
 table.sort(extraction) -- Sort the table
--- The choice of sorting is due to the fact that sorting is very cheap O (n log2 (n)) and then we can simply compare one by one the elements finding duplicates in O(n)
+-- The choice of sorting is due to the fact that sorting is very cheap O (n log2 (n))
+-- And then we can simply compare one by one the elements finding duplicates in O(n)
 
 -- Scroll through the extracted table for duplicates
 if #extraction > 1 then

@@ -339,7 +339,8 @@ function onStepIn(creature, item, position, fromPosition)
 	end
 
 	if player:getStorageValue(boss.storage) ~= 1 or roomIsOccupied(boss.centerPosition, boss.rangeX, boss.rangeY) then
-		player:teleportTo(fromPosition)
+		player:teleportTo(fromPosition, true)
+		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 		return true
 	end
 
